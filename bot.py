@@ -44,7 +44,7 @@ def generate_response(model, input):
     sentence = None
     input_words = input.split()
     num_tries = 0
-    while num_tries < 200:
+    while num_tries < 500:
         sentence = model.make_sentence(max_words=25)
         if sentence is None:
             continue
@@ -56,6 +56,7 @@ def generate_response(model, input):
                     break
         if valid_sentence:
             return sentence
+        num_tries += 1
     return "_I tried really hard, but I've got nothing for that :(_"
 
 
