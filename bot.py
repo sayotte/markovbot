@@ -64,14 +64,17 @@ async def on_message(message):
     # If the message was sent by a bot, ignore it
     if message.author.bot:
         return
-    # If the message is "!drama", generate a random response from the Markov model
-    if message.content.startswith("!drama"):
-        input = message.content.removeprefix("!drama")
-        input = input.lstrip(" ")
-        response = generate_response(model, input)
-        await message.channel.send(response)
-    else:
+
+    # If the message doesn't start with !drama, it's not for us
+    if not message.content.startswith("!drama"):
         print("message content was not !markov: %s" % message.content)
+        return
+
+    # Generate a random response from the Markov model
+    input = message.content.removeprefix("!drama")
+    input = input.lstrip(" ")
+    response = generate_response(model, input)
+    await message.channel.send(response)
 
 
 model = build_model()
