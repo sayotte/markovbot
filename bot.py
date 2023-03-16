@@ -96,7 +96,7 @@ client.run(token)
 # for _ in range(0, 20):
 #     sentence = None
 #     if len(sys.argv) > 1:
-#         sentence = generate_response(model, sys.argv[1])
+#         sentence = generate_response(model, ' '.join(sys.argv[1:]))
 #     else:
 #         sentence = generate_response(model, "")
 #     print(sentence)
