@@ -73,6 +73,11 @@ async def on_message(message):
     # Generate a random response from the Markov model
     input = message.content.removeprefix("!drama")
     input = input.lstrip(" ")
+
+    if 'Unternoober' in input:
+        await message.channel.send('Unternoober... that guy is just... :star_struck::heart_eyes:')
+        return
+
     response = generate_response(model, input)
     await message.channel.send(response)
 
